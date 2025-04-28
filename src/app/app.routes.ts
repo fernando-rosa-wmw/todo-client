@@ -3,10 +3,10 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
+    loadChildren: () => import('./presentation/view/tabs/tabs.routes').then((m) => m.routes),
   },
   {
     path: 'login',
-    loadComponent: () => import('./login/login.component').then(c => c.LoginComponent)
+    loadComponent: () => import('./presentation/view/login/login.component').then(c => c.LoginComponent)
   }
 ];

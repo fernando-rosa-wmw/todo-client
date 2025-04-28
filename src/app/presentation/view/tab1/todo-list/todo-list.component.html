@@ -1,0 +1,35 @@
+<div>
+  <ion-grid>
+    <ion-row>
+      <h2 style="padding-left: 8px;">
+        Tarefas Pendentes
+      </h2>
+    </ion-row>
+    <ion-row>
+      <ion-list style="width: 100%;" lines="full">
+        @for(todo of pendingTodos; track todo.id) {
+          <ion-item>
+            <ion-checkbox labelPlacement="end" [checked]="todo.done">{{ todo.name }}</ion-checkbox>
+          </ion-item>
+        }
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid>
+    <ion-row>
+      <h2 style="padding-left: 8px;">
+        Tarefas Finalizadas
+      </h2>
+    </ion-row>
+    <ion-row>
+      <ion-list style="width: 100%;" lines="full">
+        @for(todo of doneTodos; track todo.id) {
+          <ion-item>
+            <ion-checkbox labelPlacement="end" [checked]="todo.done">{{ todo.name }}</ion-checkbox>
+          </ion-item>
+        }
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+</div>
