@@ -9,17 +9,16 @@ FROM node:slim
 WORKDIR /app/
 
 COPY --chown=node:node . .
-COPY --chown=node:node --from=builder node_modules .
+COPY --chown=node:node --from=builder node_modules node_modules
 
 RUN mkdir .angular && \
     chown node:node .angular && \
     chmod 777 .angular
     
-RUN npm i -g @ionic/cli && \
-    npm i -D -E -g @angular/cli && \
+RUN npm i -D -E -g @angular/cli && \
     npm i -g --save-dev @angular-devkit/build-angular
 
-EXPOSE 8100
+EXPOSE 4200
 
 USER node
 
