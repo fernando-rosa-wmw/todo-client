@@ -1,0 +1,10 @@
+services:
+  todo-client:
+    build: .
+    container_name: todo-client
+    ports:
+      - 4200:4200
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.angular
