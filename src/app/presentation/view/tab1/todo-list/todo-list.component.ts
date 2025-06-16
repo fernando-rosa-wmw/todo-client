@@ -1,5 +1,5 @@
 import { Component, computed, Input, Signal, signal, WritableSignal } from '@angular/core';
-import { IonGrid, IonCol, IonCheckbox, IonRow } from "@ionic/angular/standalone";
+import { IonGrid, IonCol, IonCheckbox, IonRow, CheckboxChangeEventDetail } from "@ionic/angular/standalone";
 import { Todo } from 'src/app/structure/todo/domain/entity/todo';
 
 @Component({
@@ -20,4 +20,22 @@ export class TodoListComponent {
   penddingTodoList: Signal<Todo[]> = computed(() => this.todoList().filter(todo => ! todo.done));;
 
   constructor() { }
+
+  toggleTodo(isDone: boolean, todoId: string) {
+    this.todoList.update((todos: Array<Todo>) => {
+      return todos.map((todo: Todo) => {
+        if (todo.id === todoId) {
+          return { ...todo, done: isDone }
+        } else {
+          return todo;
+        }
+      });
+    });
+
+    console.log(this.todoList());
+  }
+
+  handleCheboxChange(isCheck: CheckboxChangeEventDetail<boolean>, todoId: string) {
+    this.toggleTodo(isCheck.checked, todoId);
+  }
 }
